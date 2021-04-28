@@ -30,14 +30,56 @@ Projeto básico de PHP feito no semestre III da faculdade de Análise e desenvol
 #### 2. Login:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema deverá ser capaz de receber informações de Login e permitir acesso caso as informações coincidam com alguma conta já cadastrada. Caso os dados não coincidam com nenhum no banco de dados, o sistema deve mostrar uma imagem de erro e propor a opção de autocadastro ao usuário.
 
-### Exclusões 
-#### 1. Tutorial:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema não deverá ser responsável por mostrar ao usuário o que fazer.
+#### 3. Logout:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema deverá ser capaz de realizar o logout de um usuário cadastrado já logado. E no final do processo, redirecionar o usuário para a tela de login.
+
+#### 4. Exclusão de Usuário:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema deverá ser capaz de permitir que o usuário logado possa realizar sua própria exclusão de conta.
+
+#### 5. Edição de Usuário:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema deverá ser capaz de permitir que o usuário logado possa realizar sua própria edição de informações de seu cadastro.
+
+#### 6. Manutenção de Mídia:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema deverá ser capaz de permitir que o usuário logado possa adicionar, excluir, editar e listar mídias. A mídia deverá possuir:
+- Indentificador próprio
+- Nome
+- Descrição
+- Ano de Lançamento (opcional)
+- Duração (opcional)
+- Avaliação (opcional)
+- Nota
+
+#### 7. Manutenção de Tipo de Mídia:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema deverá ser capaz de permitir que o usuário logado possa adicionar, excluir, editar e listar tipos de mídias. Cada mídia deverá possuir um tipo, para que possa ser melhor descrita (série, anime, filme, livro, jornais e etc). Os tipos de mídias deverão possuir:
+- Indentificador próprio
+- Nome
+- Descrição (opcional)
+
+#### 8. Manutenção de Autor:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema deverá ser capaz de permitir que o usuário logado possa adicionar, excluir, editar e listar autores de mídias. Cada mídia deverá possuir um autor, para que possa ser melhor identificada e creditada. Os autores deverão possuir:
+- Indentificador próprio
+- Nome
+- Descrição (opcional)
+- Tipo
+ 
+#### 9. Tutorial:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema deverá ser responsável por mostrar ao usuário o que fazer.
 
 
 ## Desenvolvimento Real:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+### Funções
+- Autocadastro
+- Login
+- Logout
+- Exclusão de Usuário
+- Edição de Usuário
+- Manutenção de Mídia
+- Manutenção de Tipo de Mídia
+- Manutenção de Autor
+
+### Exclusões 
+- Tutorial
 
 
 ### Lista de Entregas:

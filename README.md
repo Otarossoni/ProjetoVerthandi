@@ -4,17 +4,17 @@ Projeto básico de PHP feito no semestre III da faculdade de ADS - Casca.
 Disciplina: Desenvolvimento para Web
 Professor: Guilherme Madalozzo
 
-Descrição:
+> Descrição:
 
-Objetivos:
+> Objetivos:
 
-Justificativas:
-
-
-
-Escopo Geral:
+> Justificativas:
 
 
 
-Desenvolvimento real:
+> Escopo Geral:
+
+
+
+> Desenvolvimento real:
 

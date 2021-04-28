@@ -2,7 +2,7 @@
 Projeto básico de PHP feito no semestre III da faculdade de Análise e desenvolvimento de sistemas.
 
 #### Disciplina: Desenvolvimento para Web PL 1/2021 - Casca
-#### Professor: Guilherme Madalozzo
+#### Professor: @guimadalozzo
 
 ## Descrição:
 
@@ -38,4 +38,4 @@ Projeto básico de PHP feito no semestre III da faculdade de Análise e desenvol
 
 ### Integrantes do Projeto:
 - Otávio Monteiro Rossoni
-- Daniel Conte
+- @Daniel-Conte

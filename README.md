@@ -18,7 +18,7 @@ Projeto básico de PHP feito no semestre III da faculdade de Análise e desenvol
 
 ## Justificativas:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Na internet existem muitos sistemas capazes de registrar atividade de consumo de mídia, mas todos eles possuem um público alvo, um grupo de pessoas familiarizadas com o meio de consumo, o Projeto Verthandi se mostra útil quando o tópico é o de unir públicos-alvo.
 
 
 ## Escopo Geral:

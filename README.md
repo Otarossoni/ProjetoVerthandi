@@ -24,14 +24,14 @@ Projeto básico de PHP feito no semestre III da faculdade de Análise e desenvol
 ## Escopo Geral:
 
 ### Funções
-#### Autocadastro:
+#### 1. Autocadastro:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema deverá ser capaz de fornecer que o usuário não cadastro possa fazer seu autocadastro caso nãp possua uma no sistema.
 
-#### Login:
+#### 2. Login:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema deverá ser capaz de receber informações de Login e permitir acesso caso as informações coincidam com alguma conta já cadastrada. Caso os dados não coincidam com nenhum no banco de dados, o sistema deve mostrar uma imagem de erro e propor a opção de autocadastro ao usuário.
 
 ### Exclusões 
-#### Tutorial:
+#### 1. Tutorial:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O sistema não deverá ser responsável por mostrar ao usuário o que fazer.
 
 

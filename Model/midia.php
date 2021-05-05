@@ -1,6 +1,7 @@
 <?php
     //Objeto Mídia 
     class Midia {
+        var $id;
         var $nome;
         var $tipo;
         var $status;

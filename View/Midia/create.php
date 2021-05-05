@@ -11,6 +11,8 @@
         <!--Fórmulário responsável pela obtenção de informações necessárias para o funcionamento do Sistema-->
         <fieldset>
             <form action="../../Controller/MidiaController.php" method="post" name="form_midia">
+                <label>ID: </label>
+                <input type="number" name="id" id="id"/><br><br>
                 <label>Nome: </label>
                 <input type="text" name="nome" id="nome"/><br><br>
                 <label>Tipo: </label>

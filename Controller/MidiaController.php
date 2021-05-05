@@ -5,9 +5,11 @@
     //Área de Inclusões 
     include '../Model/midia.php';
     include '../Include/MidiaValidate.php';
+    include '../Dao/MidiaDAO.php';
 
     // Estrutura de condicionamento para verificar se os campos estão preenchidos
-    if( (!empty($_POST['nome'])) &&
+    if( (!empty($_POST['id'])) &&
+        (!empty($_POST['nome'])) &&
         (!empty($_POST['tipo'])) &&
         (!empty($_POST['status'])) &&
         (!empty($_POST['dataTermino'])) &&
@@ -31,12 +33,16 @@
         if(count($erros) == 0){
             $midia = new Midia();
 
+            $midia->id = $_POST['id'];
             $midia->nome = $_POST['nome'];
             $midia->tipo = $_POST['tipo'];
             $midia->status = $_POST['status'];
             $midia->dataTermino = $_POST['dataTermino'];
             $midia->avaliacao = $_POST['avaliacao'];
             $midia->nota = $_POST['nota'];
+
+            $midiaDao = new MidiaDAO();
+            $midiaDao->create($midia);
 
             //Echo de Midia inserida com sucesso usando Session.
             $_SESSION['nome'] = $midia->nome;

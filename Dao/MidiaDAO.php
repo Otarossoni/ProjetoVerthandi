@@ -33,5 +33,32 @@
                 echo $e;
             }
         }
+
+        public function search() {
+            try {
+                $statement = $this->connection->prepare("SELECT * FROM Midia");
+                $statement->execute();
+                $dados = $statement->fetchAll();
+                $this->connection = null;
+                
+                return $dados;
+            } catch (PDOException $e){
+                echo "Ocorreram erros ao buscar as Mídias!";
+                echo $e;
+            }
+        }
+
+        public function delete($id){
+            try {
+                $statement = $this->connection->prepare("DELETE FROM Midia WHERE id = ?");
+                $statement->bindValue(1, $id);
+                $statement->execute();
+
+                $this->connection = null;
+            } catch(PDOException $e) {
+                echo "Ocorreram erros ao deletar a mídia!";
+                echo $e;
+            }
+        }
     }
 ?>

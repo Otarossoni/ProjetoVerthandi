@@ -1,20 +1,64 @@
 <?php
     session_start();
+
+    if (!isset($_SESSION['user'])){
+        unset($_SESSION['user']);
+        header("location:../index.php");
+    }
 ?>
 
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Acesso ao Sistema</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../style.css" />
+        <title>Projeto Verthandi</title>
     </head>
     <body>
-        <?php
-            if (isset($_SESSION['user'])){
-                echo "<h1>USUÁRIO ONLINE</h1>";
-                echo '<br><a href="../Controller/AuthController.php?operation=logout">Logout</a></br>';
-            } else {
-                echo "<h1>USUÁRIO OFFLINE</h1>";
-            }
-        ?>
+        <div class="app">
+            <aside class="logo">
+                <a href="#" class="logo">Logo</a>
+            </aside>
+
+            <aside class="menu-area">
+                <nav class="menu d-flex flex-column justify-content-between">
+                    <div>
+                        <a href="./home.php" link home> <i class="fa fa-home pr-1"></i>Home </a>
+                        <a href="./Midia/index.php" link home> <i class="fa fa-home pr-1"></i>Mídia </a>
+                    </div>
+                    
+                    <a href="../Controller/AuthController.php?operation=logout"><i class="fas fa-sign-out-alt pr-1"></i>Sair</a>
+                </nav>
+            </aside>
+
+            <div id="mainContent"></div>
+
+            <footer class="footer"><span>Desenvolvido por Daniel Conte e Otávio Rossoni</span></footer>
+        </div>
+        <script src="./navigation.js"></script>
     </body>
 </html>

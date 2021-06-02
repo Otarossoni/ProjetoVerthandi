@@ -65,7 +65,7 @@
         if (isset($id)) {
             $midiaDao = new MidiaDAO();
             $midiaDao->delete($id);
-            header("location:../../Controller/MidiaController.php?operation=consultar");
+            header("location:../Controller/MidiaController.php?operation=consultar");
         } else {
             echo 'Mídia informada não existente!';
         }

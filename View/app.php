@@ -1,12 +1,10 @@
 <?php
     session_start();
 
-    if (!isset($_SESSION['user'])){
-        unset($_SESSION['user']);
-        header("location:../index.php");
-    }
+    $user = unserialize($_SESSION['user']);
+    if(!$user)
+    header("location:../index.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,7 +57,7 @@
 
             <div id="mainContent"></div>
 
-            <footer class="footer"><span>Desenvolvido por Daniel Conte e Otávio Rossoni</span></footer>
+            <footer class="footer"><span>Desenvolvido por Daniel Conte e Otávio Monteiro Rossoni</span></footer>
         </div>
         <script src="./navigation.js"></script>
     </body>

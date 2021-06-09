@@ -1,8 +1,11 @@
 <?php
     session_start();
-?>
 
-<DOCTYPE html>
+    $user = unserialize($_SESSION['user']);
+    if(!$user)
+    header("location:../../index.php");
+?>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Inserção de Mídia com Sucesso</title>

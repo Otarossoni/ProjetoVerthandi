@@ -14,3 +14,9 @@ CREATE TABLE usuario (
 	email varchar(50) NOT NULL,
 	senha varchar(50) NOT NULL
 );
+
+CREATE TABLE tipo (
+	idTipo int PRIMARY KEY,
+	nome varchar(60) NOT NULL,
+	descricao varchar(50) NOT NULL
+);

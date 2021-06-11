@@ -20,3 +20,10 @@ CREATE TABLE tipo (
 	nome varchar(60) NOT NULL,
 	descricao varchar(50) NOT NULL
 );
+
+CREATE TABLE autor (
+	idAutor int PRIMARY KEY,
+	nome varchar (100) NOT NULL,
+	descricao varchar (300),
+	tipo varchar (50) NOT NULL
+);

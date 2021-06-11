@@ -1,6 +1,6 @@
 <?php
     //Objeto Autor
-    class Midia {
+    class Autor {
         var $idAutor;
         var $nome;
         var $descricao;

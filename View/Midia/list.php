@@ -23,7 +23,8 @@
                 foreach($midias as $m) {
                     $id = $m['id'];
                     $nome = $m['nome'];
-                    echo "<tr><td><a href='../../Controller/MidiaController.php?operation=deletar&id=$id'>Deletar</a></td> - $nome<br></tr>";
+                    $tipo = $m['tipo'];
+                    echo "<tr><td><a href='../../Controller/MidiaController.php?operation=deletar&id=$id'>Deletar</a></td> - $nome - $tipo<br></tr>";
                 }
 
                 unset($_SESSION['midias']);

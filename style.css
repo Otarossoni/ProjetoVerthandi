@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 
 :root {
-  --bg-purple: #9349b1;
+  --bg-purple: #2b007a;
+  --btn-bg: #4901a5;
 
   --logo-height: 100px;
   --header-height: 100px;
@@ -22,15 +23,11 @@ body {
 }
 
 /* ---------- Login ---------- */
-#login {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #9349b1;
+.auth {
+  background-color: var(--bg-purple);
 }
 
-#login > div {
+.auth > div {
   border: 1px solid #000;
   border-radius: 25px;
 }
@@ -126,13 +123,13 @@ aside.menu-area {
 .menu a {
   display: block;
   text-decoration: none;
-  color: #000;
+  color: white;
   font-weight: 300;
   padding: 15px;
 }
 
 .menu a:hover {
-  background-color: #d45f7c;
+  background-color: #6900f0;
 }
 
 @media (max-width: 768px) {
@@ -178,4 +175,18 @@ footer.footer {
   padding: 0 25px;
   background-color: #fff;
   box-shadow: var(--shadow);
+}
+
+/* ---------- Botões ---------- */
+
+.primary {
+  color: white;
+  background-color: var(--btn-bg);
+  opacity: 90%;
+}
+
+.primary:hover {
+  color: white;
+  background-color: var(--btn-bg);
+  opacity: 100%;
 }

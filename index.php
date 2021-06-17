@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <div id='login'>
-        <div class="col-4 bg-white py-5 px-4">
-            <form action="./Controller/AuthController.php?operation=login" class="form-signin text-center" method="POST" name="form_userLogin">
+    <div class="vh-100 d-flex justify-content-center align-items-center auth">
+        <div class="col-4 bg-white pt-5 pb-3 px-4">
+            <form action="./Controller/AuthController.php?operation=login" class="text-center" method="POST" name="form_userLogin">
                 <h1>Login</h1>
 
                 <div class="col-12">
@@ -29,11 +29,14 @@
                         <input required type="password" name="senha" id="senha" class="form-control" placeholder="Digite sua senha...">
                     </div>
                 </div>
-                <input type="submit" class="btn btn-primary" value="Login">
+                <input type="submit" class="btn primary" value="Login">
                 <input type="reset" class="btn btn-secondary" value="Limpar">
             </form>
-            <form method="POST" action="./View/Cadastro/create.php">
-                <button style="background-color: purple; color: white" class="btn" type="submit">Cadastrar</button>
+            <form method="POST" action="./View/Cadastro/create.php" class="pt-5">
+                <div class="col-12 d-flex flex-column align-items-center">
+                    <label>Não tem uma conta? Cadastre-se!</label>
+                    <button class="btn primary" type="submit">Cadastrar-se</button>
+                </div>
             </form>
         </div>
 

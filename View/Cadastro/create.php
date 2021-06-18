@@ -25,15 +25,15 @@
                     </div>
                     <div class="form-group text-left">
                         <label>Nome: </label>
-                        <input required type="text" name="nome" id="nome" class="form-control"/>
+                        <input required type="text" name="nome" id="nome" class="form-control" placeholder="Digite seu nome..."/>
                     </div>
                     <div class="form-group text-left">
                         <label>E-mail: </label>
-                        <input required type="email" name="email" id="email" class="form-control"/>
+                        <input required type="email" name="email" id="email" class="form-control" placeholder="Digite seu e-mail..."/>
                     </div>
                     <div class="form-group text-left">
                         <label>Senha: </label>
-                        <input required type="password" name="senha" id="senha" class="form-control">
+                        <input required type="password" name="senha" id="senha" class="form-control" placeholder="Digite sua senha...">
                     </div>
                 </div>
                 <input type="submit" class="btn primary" value="Salvar">

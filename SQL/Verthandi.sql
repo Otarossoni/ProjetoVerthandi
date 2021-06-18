@@ -1,11 +1,16 @@
 CREATE TABLE midia (
 	id int PRIMARY KEY,
 	nome varchar(60) NOT NULL,
-	tipo varchar(20),
+	tipo int, 
+	FOREIGN KEY (tipo) REFERENCES tipo(idTipo),
+	autor int, 
+	FOREIGN KEY (autor) REFERENCES autor(idAutor),
 	status varchar(20),
 	datatermino date,
 	avaliacao varchar(500),
-	nota int NOT NULL
+	nota int NOT NULL,
+	usuario int,
+	FOREIGN KEY (usuario) REFERENCES usuario(id)
 );
 
 CREATE TABLE usuario (

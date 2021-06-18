@@ -24,14 +24,17 @@
             //Estrutura de condicionamento para a inserção de uma nova midia, que só ativa se não houverem erros na array "$erros".
             if(count($erros) == 0){
                 $midia = new Midia();
+                $user = unserialize($_SESSION['user']);
 
                 $midia->id = $_POST['id'];
                 $midia->nome = $_POST['nome'];
                 $midia->tipo = $_POST['tipo'];
+                $midia->autor = $_POST['autor'];
                 $midia->status = $_POST['status'];
                 $midia->dataTermino = $_POST['dataTermino'];
                 $midia->avaliacao = $_POST['avaliacao'];
                 $midia->nota = $_POST['nota'];
+                $midia->usuario = $user[0]['id'];
 
                 $midiaDao = new MidiaDAO();
                 $midiaDao->create($midia);

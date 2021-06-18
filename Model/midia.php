@@ -4,10 +4,12 @@
         var $id;
         var $nome;
         var $tipo;
+        var $autor;
         var $status;
         var $dataTermino;
         var $avaliacao;
         var $nota;
+        var $usuario;
 
         //Método Contrutor do objeto Mídia
         public function __construct(){}

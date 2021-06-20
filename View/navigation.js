@@ -1,22 +1,33 @@
-function fetchPage(link) {
+function fetchPage(page) {
   const content = $("#mainContent");
+  const url = window.location.href.replace("app.php", page);
 
-  link.onclick = function (e) {
-    e.preventDefault();
-    fetch(link.href)
-      .then((resp) => resp.text())
-      .then((page) => content.html(page));
-  };
+  fetch(url)
+    .then((resp) => resp.text())
+    .then((rawPage) => content.html(rawPage));
 }
 
-const links = $("[link]");
-links.each((i, link) => fetchPage(link));
+const queryString = window.location.search;
+const params = new URLSearchParams(queryString);
+const page = params.get("page");
 
-(() => {
-  const home = $("[home]")[0];
-  const content = $("#mainContent");
-
-  fetch(home.href)
-    .then((resp) => resp.text())
-    .then((page) => content.html(page));
-})();
+if (window.location.href.includes("app.php")) {
+  switch (page) {
+    case "autor": {
+      fetchPage("Autor/index.php");
+      break;
+    }
+    case "midia": {
+      fetchPage("Midia/index.php");
+      break;
+    }
+    case "tipo": {
+      fetchPage("Tipo/index.php");
+      break;
+    }
+    default: {
+      fetchPage("home.php");
+      break;
+    }
+  }
+}

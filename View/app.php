@@ -47,10 +47,10 @@
             <aside class="menu-area">
                 <nav class="menu d-flex flex-column justify-content-between">
                     <div>
-                        <a href="./home.php" link home> <i class="fa fa-home pr-1"></i>Home </a>
-                        <a href="./Autor/index.php" link home> <i class="fab fa-autoprefixer pr-1"></i>Autor </a>
-                        <a href="./Midia/index.php" link home> <i class="fas fa-film pr-1"></i>Mídia </a>
-                        <a href="./Tipo/index.php" link home> <i class="fas fa-layer-group pr-1"></i>Tipo </a>
+                        <a href="?page=home"> <i class="fa fa-home pr-1"></i>Home </a>
+                        <a href="../Controller/AutorController.php?operation=consultar"> <i class="fab fa-autoprefixer pr-1"></i>Autor </a>
+                        <a href="?page=midia"> <i class="fas fa-film pr-1"></i>Mídia </a>
+                        <a href="?page=tipo"> <i class="fas fa-layer-group pr-1"></i>Tipo </a>
                     </div>
                     
                     <a href="../Controller/AuthController.php?operation=logout"><i class="fas fa-sign-out-alt pr-1"></i>Sair</a>

@@ -25,7 +25,8 @@
 
                 //Echo de Autor inserido com sucesso usando Session.
                 $_SESSION['nome'] = $autor->nome;
-                header("location:../View/Autor/detail.php");
+                
+                listar();
             } else {
                 //Echo de erro ao inserir nova midia usando Session.
                 $err = serialize($erros);
@@ -39,7 +40,7 @@
         $autores = $autorDoa->search();
 
         $_SESSION['autores'] = serialize($autores);
-        header("location:../View/Autor/list.php");
+        header("location:../View/app.php?page=autor");
     }
 
     function atualizar() {
@@ -51,7 +52,8 @@
         if (isset($id)) {
             $autorDao = new AutorDAO();
             $autorDao->delete($id);
-            header("location:../Controller/AutorController.php?operation=consultar");
+
+            listar();
         } else {
             echo 'Autor informado não existente!';
         }

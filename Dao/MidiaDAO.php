@@ -28,8 +28,7 @@
 
                 // var_dump($statement); die();
 
-                //Encerra a conexão com o Banco de Dados
-                $this->connection = null;
+                $this->closeConnection();
             } catch (PDOException $e) {
                 echo "Ocorreram erros ao inserir uma nova midia!";
                 echo $e;
@@ -41,7 +40,6 @@
                 $statement = $this->connection->prepare("SELECT * FROM Midia");
                 $statement->execute();
                 $dados = $statement->fetchAll();
-                $this->connection = null;
                 
                 return $dados;
             } catch (PDOException $e){
@@ -50,13 +48,58 @@
             }
         }
 
+        public function searchAutores() {
+            try {
+                $statement = $this->connection->prepare("SELECT * FROM Autor");
+                $statement->execute();
+                $dados = $statement->fetchAll();
+                
+                return $dados;
+            } catch (PDOException $e){
+                echo "Ocorreram erros ao buscar os Autores!";
+                echo $e;
+            }
+        }
+
+        public function searchTipos() {
+            try {
+                $statement = $this->connection->prepare("SELECT * FROM Tipo");
+                $statement->execute();
+                $dados = $statement->fetchAll();
+                
+                return $dados;
+            } catch (PDOException $e){
+                echo "Ocorreram erros ao buscar os Tipos de Mídia!";
+                echo $e;
+            }
+        }
+
+        public function findAutor($id) {
+            try {
+                $statement = $this->connection->prepare("SELECT * FROM Autor WHERE idautor = ?");
+                $statement->bindValue(1, $id);
+                $statement->execute();
+                $autor = $statement->fetchAll();
+                
+                return $autor;
+            } catch (PDOException $e){
+                echo "Ocorreram erros ao buscar o Autor!";
+                echo $e;
+            }
+        }
+
+        public function closeConnection() {
+            //Encerra a conexão com o Banco de Dados
+            $this->connection = null;
+        }
+
         public function delete($id){
             try {
                 $statement = $this->connection->prepare("DELETE FROM Midia WHERE id = ?");
                 $statement->bindValue(1, $id);
                 $statement->execute();
 
-                $this->connection = null;
+                $this->closeConnection();
             } catch(PDOException $e) {
                 echo "Ocorreram erros ao deletar a mídia!";
                 echo $e;

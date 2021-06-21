@@ -42,7 +42,8 @@
                 //Echo de Midia inserida com sucesso usando Session.
                 $_SESSION['nome'] = $midia->nome;
                 $_SESSION['tipo'] = $midia->tipo;
-                header("location:../View/Midia/detail.php");
+                
+                listar();
             } else {
                 //Echo de erro ao inserir nova midia usando Session.
                 $err = serialize($erros);
@@ -54,9 +55,15 @@
     function listar() {
         $midiaDao = new MidiaDAO();
         $midias = $midiaDao->search();
+        $tipos = $midiaDao->searchTipos();
+        $autores = $midiaDao->searchAutores();
+        $midiaDao->closeConnection();
 
         $_SESSION['midias'] = serialize($midias);
-        header("location:../View/Midia/list.php");
+        $_SESSION['tipos'] = serialize($tipos);
+        $_SESSION['autores'] = serialize($autores);
+        
+        header("location:../View/app.php?page=midia");
     }
 
     function atualizar() {
@@ -68,7 +75,8 @@
         if (isset($id)) {
             $midiaDao = new MidiaDAO();
             $midiaDao->delete($id);
-            header("location:../Controller/MidiaController.php?operation=consultar");
+            
+            listar();
         } else {
             echo 'Mídia informada não existente!';
         }

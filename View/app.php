@@ -49,7 +49,7 @@
                     <div>
                         <a href="?page=home"> <i class="fa fa-home pr-1"></i>Home </a>
                         <a href="../Controller/AutorController.php?operation=consultar"> <i class="fab fa-autoprefixer pr-1"></i>Autor </a>
-                        <a href="?page=midia"> <i class="fas fa-film pr-1"></i>Mídia </a>
+                        <a href="../Controller/MidiaController.php?operation=consultar"> <i class="fas fa-film pr-1"></i>Mídia </a>
                         <a href="../Controller/TipoController.php?operation=consultar"> <i class="fas fa-layer-group pr-1"></i>Tipo </a>
                     </div>
                     

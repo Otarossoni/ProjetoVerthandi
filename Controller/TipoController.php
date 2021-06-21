@@ -24,7 +24,8 @@
 
                 //Echo de Midia inserida com sucesso usando Session.
                 $_SESSION['nome'] = $tipo->nome;
-                header("location:../View/Tipo/detail.php");
+                
+                listar();
             } else {
                 //Echo de erro ao inserir nova midia usando Session.
                 $err = serialize($erros);
@@ -38,7 +39,7 @@
         $tipos = $tipoDoa->search();
 
         $_SESSION['tipos'] = serialize($tipos);
-        header("location:../View/Tipo/list.php");
+        header("location:../View/app.php?page=tipo");
     }
 
     function atualizar() {
@@ -46,11 +47,12 @@
     }
 
     function deletar() {
-        $id = $_GET['idTipo'];
+        $id = $_GET['id'];
         if (isset($id)) {
             $tipoDao = new TipoDAO();
             $tipoDao->delete($id);
-            header("location:../Controller/TipoController.php?operation=consultar");
+            
+            listar();
         } else {
             echo 'Tipo informado não existente!';
         }

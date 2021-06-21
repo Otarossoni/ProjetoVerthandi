@@ -115,15 +115,25 @@
             </thead>
             <tbody>
                 <?php
-                    if(isset($_SESSION["midias"])) {
+                    if(isset($_SESSION["midias"]) && isset($_SESSION["autores"]) && isset($_SESSION["tipos"])) {
                         $midias = array();
+                        $tipos = array();
+                        $autores = array();
+
                         $midias = unserialize($_SESSION['midias']);
+                        $tipos = unserialize($_SESSION['tipos']);
+                        $autores = unserialize($_SESSION['autores']);
+
+
 
                         foreach($midias as $m) {
+                            $tipoIndex = array_search($m['tipo'], array_column($tipos, 'idtipo'));
+                            $autorIndex = array_search($m['autor'], array_column($autores, 'idautor'));
+
                             $id = $m['id'];
                             $nome = $m['nome'];
-                            $idTipo = $m['tipo'];
-                            $idAutor = $m['autor'];
+                            $tipo = $tipos[$tipoIndex]['nome'];
+                            $autor = $autores[$autorIndex]['nome'];
                             $status = $m['status'];
                             $dataTermino = $m['datatermino'];
                             $avaliacao = $m['avaliacao'];
@@ -132,8 +142,8 @@
                                 <tr>
                                     <td>$id</td>
                                     <td>$nome</td>
-                                    <td>$idTipo</td>
-                                    <td>$idAutor</td>
+                                    <td>$tipo</td>
+                                    <td>$autor</td>
                                     <td>$status</td>
                                     <td>$dataTermino</td>
                                     <td>$avaliacao</td>

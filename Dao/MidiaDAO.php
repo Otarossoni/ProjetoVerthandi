@@ -74,20 +74,6 @@
             }
         }
 
-        public function findAutor($id) {
-            try {
-                $statement = $this->connection->prepare("SELECT * FROM Autor WHERE idautor = ?");
-                $statement->bindValue(1, $id);
-                $statement->execute();
-                $autor = $statement->fetchAll();
-                
-                return $autor;
-            } catch (PDOException $e){
-                echo "Ocorreram erros ao buscar o Autor!";
-                echo $e;
-            }
-        }
-
         public function closeConnection() {
             //Encerra a conexão com o Banco de Dados
             $this->connection = null;

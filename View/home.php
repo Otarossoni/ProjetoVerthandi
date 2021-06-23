@@ -4,10 +4,12 @@ session_start();
 $user = unserialize($_SESSION['user']);
 if (!$user)
     header("location:../index.php");
+
+    $nome_usuario = $user[0]['nome'];    
 ?>
 
 <header class="header d-flex flex-column px-3 bg-white">
-  <h1 class="mt-3"><i class="fa fa-home pr-2"></i>Bem-vindo, Você!</h1>
+  <h1 class="mt-3"><i class="fa fa-home pr-2"></i>Bem-vindo, <?php echo $nome_usuario;?>!</h1>
   <p class="lead text-muted">Verthandi é um projeto de caráter educacional, desenvolvido durante o primeiro período letivo do ano de 2021 na disciplina de “Desenvolvimento para Web”.</p>
 </header>
 

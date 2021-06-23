@@ -74,6 +74,15 @@ function deletar()
     }
 }
 
+function searchTipo($id)
+{
+    $tipoDoa = new TipoDAO();
+    $tipo = $tipoDoa->searchTipo($id);
+
+    $_SESSION['tipos'] = serialize($tipo);
+    header("location:../View/app.php?page=tipo");
+}
+
 $operacao = $_GET['operation'];
 if (isset($operacao)) {
     switch ($operacao) {
@@ -85,7 +94,11 @@ if (isset($operacao)) {
             };
             break;
         case 'consultar':
-            listar();
+            if (isset($_GET['id'])) {
+                searchTipo($_GET['id']);
+            } else {
+                listar();
+            };
             break;
         case 'atualizar':
             atualizar();

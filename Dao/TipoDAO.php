@@ -83,5 +83,23 @@
                 echo $e;
             }
         }
+
+        public function searchTipo($idTipo) {
+            try {
+                $user = unserialize($_SESSION['user']);
+                $statement = $this->connection->prepare("SELECT * FROM Tipo WHERE usuario = ? AND idTipo = ?");
+                $statement->bindValue(1, $user[0]['id']);
+                $statement->bindValue(2, $idTipo);
+
+                $statement->execute();
+                $dados = $statement->fetchAll();
+                $this->connection = null;
+                
+                return $dados;
+            } catch (PDOException $e){
+                echo "Ocorreram erros ao buscar os Tipos de Mídia!";
+                echo $e;
+            }
+        }
     }
 ?>

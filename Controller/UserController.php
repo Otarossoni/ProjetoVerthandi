@@ -65,8 +65,12 @@
     if (isset($operacao)) {
         switch($operacao) {
             case 'cadastrar':
-                criar();
-                break;
+                if(isset($_POST['id'])){
+                    criar();
+                } else {
+                    atualizar();
+                };
+                break;  
             case 'consultar':
                 listar();
                 break;

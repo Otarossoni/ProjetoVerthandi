@@ -60,5 +60,28 @@
                 echo $e;
             }
         }
+
+        public function update($tipo){
+            try {
+                $statement = $this->connection->prepare(
+                    "UPDATE tipo SET nome = ?, descricao = ? WHERE usuario = ? AND idtipo = ?"
+                );
+                
+                $statement->bindValue(1, $tipo->nome);
+                $statement->bindValue(2, $tipo->descricao);
+                $statement->bindValue(3, $tipo->usuario);
+                $statement->bindValue(4, $tipo->id);
+
+                $statement->execute();
+
+                // var_dump($statement); die();
+
+                //Encerra a conexão com o Banco de Dados
+                $this->connection = null;
+            } catch (PDOException $e) {
+                echo "Ocorreram erros ao atualizar o tipo!";
+                echo $e;
+            }
+        }
     }
 ?>

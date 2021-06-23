@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <input type="submit" class="btn primary" value="Salvar">
-                <input type="reset" class="btn btn-secondary" value="Limpar">
+                <a href="../../index.php" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>
 

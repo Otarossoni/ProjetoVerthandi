@@ -27,9 +27,7 @@
                 $userDao = new UserDAO();
                 $userDao->create($user);
 
-                //Echo de Usuário inserida com sucesso usando Session.
-                $_SESSION['nome'] = $user->nome;
-                header("location:../View/app.php?page=home");
+                header("location:../index.php");
             } else {
                 //Echo de erro ao inserir nova Usuário usando Session.
                 $err = serialize($erros);

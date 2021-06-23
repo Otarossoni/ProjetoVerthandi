@@ -11,18 +11,17 @@
         public function create($midia){
             try {
                 $statement = $this->connection->prepare(
-                    "INSERT INTO midia (id, nome, tipo, autor, status, dataTermino, avaliacao, nota, usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                    "INSERT INTO midia (nome, tipo, autor, status, dataTermino, avaliacao, nota, usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
                 );
 
-                $statement->bindValue(1, $midia->id);
-                $statement->bindValue(2, $midia->nome);
-                $statement->bindValue(3, $midia->tipo);
-                $statement->bindValue(4, $midia->autor);
-                $statement->bindValue(5, $midia->status);
-                $statement->bindValue(6, $midia->dataTermino);
-                $statement->bindValue(7, $midia->avaliacao);
-                $statement->bindValue(8, $midia->nota);
-                $statement->bindValue(9, $midia->usuario);
+                $statement->bindValue(1, $midia->nome);
+                $statement->bindValue(2, $midia->tipo);
+                $statement->bindValue(3, $midia->autor);
+                $statement->bindValue(4, $midia->status);
+                $statement->bindValue(5, $midia->dataTermino);
+                $statement->bindValue(6, $midia->avaliacao);
+                $statement->bindValue(7, $midia->nota);
+                $statement->bindValue(8, $midia->usuario);
 
                 $statement->execute();
 
@@ -37,7 +36,9 @@
 
         public function search() {
             try {
-                $statement = $this->connection->prepare("SELECT * FROM Midia");
+                $user = unserialize($_SESSION['user']);
+                $statement = $this->connection->prepare("SELECT * FROM Midia WHERE usuario = ?");
+                $statement->bindValue(1, $user[0]['id']);
                 $statement->execute();
                 $dados = $statement->fetchAll();
                 
@@ -50,7 +51,9 @@
 
         public function searchAutores() {
             try {
-                $statement = $this->connection->prepare("SELECT * FROM Autor");
+                $user = unserialize($_SESSION['user']);
+                $statement = $this->connection->prepare("SELECT * FROM Autor WHERE usuario = ?");
+                $statement->bindValue(1, $user[0]['id']);
                 $statement->execute();
                 $dados = $statement->fetchAll();
                 
@@ -63,7 +66,9 @@
 
         public function searchTipos() {
             try {
-                $statement = $this->connection->prepare("SELECT * FROM Tipo");
+                $user = unserialize($_SESSION['user']);
+                $statement = $this->connection->prepare("SELECT * FROM Tipo WHERE usuario = ?");
+                $statement->bindValue(1, $user[0]['id']);
                 $statement->execute();
                 $dados = $statement->fetchAll();
                 
@@ -81,8 +86,10 @@
 
         public function delete($id){
             try {
-                $statement = $this->connection->prepare("DELETE FROM Midia WHERE id = ?");
+                $user = unserialize($_SESSION['user']);
+                $statement = $this->connection->prepare("DELETE FROM Midia WHERE id = ? AND usuario = ?");
                 $statement->bindValue(1, $id);
+                $statement->bindValue(2, $user[0]['id']);
                 $statement->execute();
 
                 $this->closeConnection();

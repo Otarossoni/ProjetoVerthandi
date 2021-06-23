@@ -4,6 +4,7 @@
         var $idTipo;
         var $nome;
         var $descricao;
+        var $usuario;
 
         //Método Contrutor do objeto Tipo
         public function __construct(){}

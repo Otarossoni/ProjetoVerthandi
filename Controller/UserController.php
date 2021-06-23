@@ -20,7 +20,6 @@
             if(count($erros) == 0){
                 $user = new User();
 
-                $user->id = $_POST['id'];
                 $user->nome = $_POST['nome'];
                 $user->email = $_POST['email'];
                 $user->senha = $_POST['senha'];

@@ -14,10 +14,6 @@
     <div class="p-3 mt-3 bg-white">
         <form action="../Controller/TipoController.php?operation=cadastrar" class="form" method="post" name="form_tipo">
             <div class="row">
-                <div class="form-group text-left col-1">
-                    <label>ID:</label>
-                    <input required type="number" name="idTipo" id="id" class="form-control"/>
-                </div>
                 <div class="form-group text-left col-3">
                     <label>Nome: </label>
                     <input required type="text" name="nome" id="nome" class="form-control" placeholder="Digite o nome..."/>

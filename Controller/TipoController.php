@@ -14,10 +14,11 @@
             //Estrutura de condicionamento para a inserção de um novo tipo, que só ativa se não houverem erros na array "$erros".
             if(count($erros) == 0){
                 $tipo = new Tipo();
+                $user = unserialize($_SESSION['user']);
 
-                $tipo->idTipo = $_POST['idTipo'];
                 $tipo->nome = $_POST['nome'];
                 $tipo->descricao = $_POST['descricao'];
+                $tipo->usuario = $user[0]['id'];
 
                 $tipoDao = new TipoDAO();
                 $tipoDao->create($tipo);

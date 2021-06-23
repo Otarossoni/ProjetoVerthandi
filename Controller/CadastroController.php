@@ -20,7 +20,6 @@
             if(count($erros) == 0){
                 $user = new User();
 
-                $user->id = $_POST['id'];
                 $user->nome = $_POST['nome'];
                 $user->email = $_POST['email'];
                 $user->senha = $_POST['senha'];
@@ -30,7 +29,7 @@
 
                 //Echo de Usuário inserida com sucesso usando Session.
                 $_SESSION['nome'] = $user->nome;
-                header("location:../View/Cadastro/detail.php");
+                header("location:../View/app.php?page=home");
             } else {
                 //Echo de erro ao inserir nova Usuário usando Session.
                 $err = serialize($erros);

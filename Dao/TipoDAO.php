@@ -11,12 +11,12 @@
         public function create($tipo){
             try {
                 $statement = $this->connection->prepare(
-                    "INSERT INTO tipo (idTipo, nome, descricao) VALUES (?, ?, ?)"
+                    "INSERT INTO tipo (nome, descricao, usuario) VALUES (?, ?, ?)"
                 );
 
-                $statement->bindValue(1, $tipo->idTipo);
-                $statement->bindValue(2, $tipo->nome);
-                $statement->bindValue(3, $tipo->descricao);
+                $statement->bindValue(1, $tipo->nome);
+                $statement->bindValue(2, $tipo->descricao);
+                $statement->bindValue(3, $tipo->usuario);
 
                 $statement->execute();
 
@@ -32,7 +32,9 @@
 
         public function search() {
             try {
-                $statement = $this->connection->prepare("SELECT * FROM Tipo");
+                $user = unserialize($_SESSION['user']);
+                $statement = $this->connection->prepare("SELECT * FROM Tipo WHERE usuario = ?");
+                $statement->bindValue(1, $user[0]['id']);
                 $statement->execute();
                 $dados = $statement->fetchAll();
                 $this->connection = null;
@@ -46,8 +48,10 @@
 
         public function delete($idTipo){
             try {
-                $statement = $this->connection->prepare("DELETE FROM Tipo WHERE idTipo = ?");
+                $user = unserialize($_SESSION['user']);
+                $statement = $this->connection->prepare("DELETE FROM Tipo WHERE idTipo = ? AND usuario = ?");
                 $statement->bindValue(1, $idTipo);
+                $statement->bindValue(2, $user[0]['id']);
                 $statement->execute();
 
                 $this->connection = null;

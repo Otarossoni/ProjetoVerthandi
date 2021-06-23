@@ -26,7 +26,6 @@
                 $midia = new Midia();
                 $user = unserialize($_SESSION['user']);
 
-                $midia->id = $_POST['id'];
                 $midia->nome = $_POST['nome'];
                 $midia->tipo = $_POST['tipo'];
                 $midia->autor = $_POST['autor'];

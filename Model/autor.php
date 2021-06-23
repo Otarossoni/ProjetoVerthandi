@@ -5,6 +5,7 @@
         var $nome;
         var $descricao;
         var $tipo;
+        var $usuario;
 
         //Método Contrutor do objeto Autor
         public function __construct(){}

@@ -11,13 +11,13 @@
         public function create($autor){
             try {
                 $statement = $this->connection->prepare(
-                    "INSERT INTO autor (idAutor, nome, descricao, tipo) VALUES (?, ?, ?, ?)"
+                    "INSERT INTO autor (nome, descricao, tipo, usuario) VALUES (?, ?, ?, ?)"
                 );
 
-                $statement->bindValue(1, $autor->idAutor);
-                $statement->bindValue(2, $autor->nome);
-                $statement->bindValue(3, $autor->descricao);
-                $statement->bindValue(4, $autor->tipo);
+                $statement->bindValue(1, $autor->nome);
+                $statement->bindValue(2, $autor->descricao);
+                $statement->bindValue(3, $autor->tipo);
+                $statement->bindValue(4, $autor->usuario);
 
                 $statement->execute();
 
@@ -33,7 +33,10 @@
 
         public function search() {
             try {
-                $statement = $this->connection->prepare("SELECT * FROM Autor");
+                $user = unserialize($_SESSION['user']);
+                $statement = $this->connection->prepare("SELECT * FROM Autor WHERE usuario = ?");
+                $statement->bindValue(1, $user[0]['id']);
+
                 $statement->execute();
                 $dados = $statement->fetchAll();
                 $this->connection = null;
@@ -47,8 +50,10 @@
 
         public function delete($idAutor){
             try {
-                $statement = $this->connection->prepare("DELETE FROM Autor WHERE idAutor = ?");
-                $statement->bindValue(1, $idAutor);
+                $user = unserialize($_SESSION['user']);
+                $statement = $this->connection->prepare("DELETE FROM Autor WHERE idAutor = ? AND usuario = ?");
+                $statement->bindValue(1, $user[0]['id']);
+                $statement->bindValue(2, $idAutor);
                 $statement->execute();
 
                 $this->connection = null;

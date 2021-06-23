@@ -11,13 +11,12 @@
         public function create($user){
             try {
                 $statement = $this->connection->prepare(
-                    "INSERT INTO usuario (id, nome, email, senha) VALUES (?, ?, ?, md5(?))"
+                    "INSERT INTO usuario (nome, email, senha) VALUES (?, ?, md5(?))"
                 );
 
-                $statement->bindValue(1, $user->id);
-                $statement->bindValue(2, $user->nome);
-                $statement->bindValue(3, $user->email);
-                $statement->bindValue(4, $user->senha);
+                $statement->bindValue(1, $user->nome);
+                $statement->bindValue(2, $user->email);
+                $statement->bindValue(3, $user->senha);
 
                 $statement->execute();
 

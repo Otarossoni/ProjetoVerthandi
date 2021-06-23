@@ -20,10 +20,6 @@
                 <h1>Cadastro</h1>
                 <div class="col-12">
                     <div class="form-group text-left">
-                        <label>ID: </label>
-                        <input required type="number" name="id" id="id" class="form-control"/>
-                    </div>
-                    <div class="form-group text-left">
                         <label>Nome: </label>
                         <input required type="text" name="nome" id="nome" class="form-control" placeholder="Digite seu nome..."/>
                     </div>

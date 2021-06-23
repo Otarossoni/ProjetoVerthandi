@@ -25,6 +25,10 @@ if (window.location.href.includes("app.php")) {
       fetchPage("Tipo/index.php");
       break;
     }
+    case "perfil": {
+      fetchPage("Perfil/index.php");
+      break;
+    }
     default: {
       fetchPage("home.php");
       break;

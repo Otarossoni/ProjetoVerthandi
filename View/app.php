@@ -53,7 +53,10 @@
                         <a href="../Controller/TipoController.php?operation=consultar"> <i class="fas fa-layer-group pr-1"></i>Tipo </a>
                     </div>
                     
-                    <a href="../Controller/AuthController.php?operation=logout"><i class="fas fa-sign-out-alt pr-1"></i>Sair</a>
+                    <div>
+                        <a href="?page=perfil"> <i class="fas fa-user pr-1"></i>Perfil </a>
+                        <a href="../Controller/AuthController.php?operation=logout"><i class="fas fa-sign-out-alt pr-1"></i>Sair</a>
+                    </div>
                 </nav>
             </aside>
 

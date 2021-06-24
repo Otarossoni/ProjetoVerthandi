@@ -79,7 +79,7 @@ function searchTipo($id)
     $tipoDoa = new TipoDAO();
     $tipo = $tipoDoa->searchTipo($id);
 
-    $_SESSION['tipos'] = serialize($tipo);
+    $_SESSION['tipo'] = serialize($tipo);
     header("location:../View/app.php?page=tipo");
 }
 
@@ -87,10 +87,10 @@ $operacao = $_GET['operation'];
 if (isset($operacao)) {
     switch ($operacao) {
         case 'cadastrar':
-            if (isset($_POST['id'])) {
-                criar();
-            } else {
+            if (isset($_POST['id']) && $_POST['id'] != '') {
                 atualizar();
+            } else {
+                criar();
             };
             break;
         case 'consultar':

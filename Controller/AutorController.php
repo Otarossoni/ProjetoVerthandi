@@ -49,11 +49,12 @@ function listar()
 function atualizar()
 {
     $user = unserialize($_SESSION['user']);
-    $autor = new Tipo();
+    $autor = new Autor();
 
     $autor->id = $_POST['id'];
     $autor->nome = $_POST['nome'];
     $autor->descricao = $_POST['descricao'];
+    $autor->tipo = $_POST['tipo'];
     $autor->usuario = $user[0]['id'];
 
     $autorDao = new AutorDAO();

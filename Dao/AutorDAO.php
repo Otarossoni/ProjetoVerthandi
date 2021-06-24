@@ -52,8 +52,8 @@
             try {
                 $user = unserialize($_SESSION['user']);
                 $statement = $this->connection->prepare("DELETE FROM Autor WHERE idAutor = ? AND usuario = ?");
-                $statement->bindValue(1, $user[0]['id']);
-                $statement->bindValue(2, $idAutor);
+                $statement->bindValue(1, $idAutor);
+                $statement->bindValue(2, $user[0]['id']);
                 $statement->execute();
 
                 $this->connection = null;
@@ -90,7 +90,7 @@
         public function searchAutor($idAutor) {
             try {
                 $user = unserialize($_SESSION['user']);
-                $statement = $this->connection->prepare("SELECT * FROM Tipo WHERE usuario = ? AND idAutor = ?");
+                $statement = $this->connection->prepare("SELECT * FROM Autor WHERE usuario = ? AND idAutor = ?");
                 $statement->bindValue(1, $user[0]['id']);
                 $statement->bindValue(2, $idAutor);
 

@@ -14,15 +14,40 @@
     <div class="p-3 mt-3 bg-white">
         <form action="../Controller/MidiaController.php?operation=cadastrar" class="form" method="post" name="form_midia">
             <div class="row">
+            <div class="form-group text-left col-1">
+                    <label>ID: </label>
+                    <?php
+                        $id = null;
+                        if(isset($_SESSION['midia'])) {
+                            $id = unserialize($_SESSION['midia'])[0]['id'];
+                        }
+                        echo "<input readonly type='text' name='id' id='id' class='form-control' value='$id'/>"
+                    ?>
+                </div>
                 <div class="form-group text-left col-3">
                     <label>Nome: </label>
-                    <input required type="text" name="nome" id="nome" class="form-control" placeholder="Digite o nome..."/>
+                    <?php
+                        $nome = null;
+                        if(isset($_SESSION['midia'])) {
+                            $nome = unserialize($_SESSION['midia'])[0]['nome'];
+                        }
+                        echo "<input required type='text' name='nome' id='nome' class='form-control' placeholder='Digite o nome...' value='$nome'/>"
+                    ?>
                 </div>
                 <div class="form-group text-left col-3">
                     <label>Tipo: </label>
                     <select required name="tipo" id="tipo" class="form-control" placeholder="Selecione o tipo...">
                         <option disabled selected>Selecione um tipo</option>
                         <?php
+                            $idTipo = null;
+                            if(isset($_SESSION['midia'])) {
+                                $idTipo = unserialize($_SESSION['midia'])[0]['tipo'];
+                            }
+
+                            if(!isset($idTipo)) {
+                                echo "<option disabled selected>Selecione um tipo</option>";
+                            }
+
                             if(isset($_SESSION["tipos"])) {
                                 $tipos = array();
                                 $tipos = unserialize($_SESSION["tipos"]);
@@ -31,9 +56,11 @@
                                     $id = $t['idtipo'];
                                     $nome = $t['nome'];
 
-                                    echo "
-                                        <option value='$id'>$nome</option>
-                                    ";
+                                    if($idTipo != $id) {
+                                        echo "<option value='$id'>$nome</option>";
+                                    } else {
+                                        echo "<option selected value='$id'>$nome</option>";
+                                    }
                                 }
                             }
                         ?>
@@ -42,8 +69,16 @@
                 <div class="form-group text-left col-3">
                     <label>Autor: </label>
                     <select required name="autor" id="autor" class="form-control" placeholder="Selecione o autor...">
-                        <option disabled selected>Selecione um autor</option>
                         <?php
+                            $idAutor = null;
+                            if(isset($_SESSION['midia'])) {
+                                $idAutor = unserialize($_SESSION['midia'])[0]['autor'];
+                            }
+
+                            if(!isset($idAutor)) {
+                                echo "<option disabled selected>Selecione um autor</option>";
+                            }
+
                             if(isset($_SESSION["autores"])) {
                                 $autores = array();
                                 $autores = unserialize($_SESSION["autores"]);
@@ -52,9 +87,11 @@
                                     $id = $a['idautor'];
                                     $nome = $a['nome'];
 
-                                    echo "
-                                        <option value='$id'>$nome</option>
-                                    ";
+                                    if($idAutor != $id) {
+                                        echo "<option value='$id'>$nome</option>";
+                                    } else {
+                                        echo "<option selected value='$id'>$nome</option>";
+                                    }
                                 }
                             }
                         ?>
@@ -63,11 +100,28 @@
                 <div class="form-group text-left col-2">
                     <label>Status: </label>
                     <select required name="status" id="status" class="form-control">
-                        <option disabled selected>Selecione um status</option>
-                        <option value="Não iniciada">Não iniciada</option>
-                        <option value="Em andamento">Em andamento</option>
-                        <option value="Finalizada">Finalizada</option>
-                        <option value="Interrompida">Interrompida</option>
+                    <?php 
+                        $status = null;
+                        if(isset($_SESSION['midia'])) {
+                            $status = unserialize($_SESSION['midia'])[0]['status'];
+                        }
+
+                        if(!isset($status)) {
+                            echo "<option disabled selected>Selecione um status</option>";
+                        } else {
+                            echo "<option disabled selected>$status</option>";
+                        }
+
+                        $statusList = array(0 => 'Não iniciada', 1 => 'Em andamento', 2 => 'Finalizada', 3 => 'Interrompida');
+
+                        foreach($statusList as $s) {
+                            if($status != $s) {
+                                echo "<option value='$s'>$s</option>";
+                            } else {
+                                echo "<option selected value='$s'>$s</option>";
+                            }
+                        }
+                    ?>
                     </select>
                 </div>
             </div>
@@ -75,22 +129,42 @@
             <div class="row">
                 <div class="form-group text-left col-2">
                     <label>Data de Término:</label>
-                    <input type="date" name="dataTermino" id="dataTermino" class="form-control" placeholder="Digite a data de término..."/>
+                    <?php
+                        $dataTermino = null;
+                        if(isset($_SESSION['midia'])) {
+                            $dataTermino = unserialize($_SESSION['midia'])[0]['dataTermino'];
+                        }
+                        echo "<input type='date' name='dataTermino' id='dataTermino' class='form-control' placeholder='Digite a data de término...' value='$dataTermino'/>"
+                    ?>
                 </div>
                 <div class="form-group text-left col-3">
                     <label>Avaliação: </label>
-                    <textarea required type="text" name="avaliacao" id="avaliacao" cols="20" rows="3" class="form-control" placeholder="Digite a avaliacao..."></textarea>
+                    <?php
+                        $avaliacao = null;
+                        if(isset($_SESSION['midia'])) {
+                            $avaliacao = unserialize($_SESSION['midia'])[0]['avaliacao'];
+                        }
+                        echo "<textarea required type='text' name='avaliacao' id='avaliacao' cols='20' rows='3' class='form-control' placeholder='Digite a avaliacao...'>$avaliacao</textarea>"
+                    ?>
                 </div>
                 <div class="form-group text-left col-1">
                     <label>Nota:</label>
-                    <input required type="number" name="nota" id="nota" class="form-control"/>
+                    <?php
+                        $nota = null;
+                        if(isset($_SESSION['midia'])) {
+                            $nota = unserialize($_SESSION['midia'])[0]['nota'];
+                        }
+                        echo "<input required type='number' name='nota' id='nota' class='form-control' value='$nota'/>";
+
+                        unset($_SESSION['midia'])
+                    ?>
                 </div>
             </div>
                 
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
                     <input type="submit" value="Inserir" class="btn primary mr-2">
-                    <input type="reset" value="Limpar" class="btn btn-secondary">
+                    <a href="?page=midia" class="btn btn-secondary">Limpar</a>
                 </div>
             </div>
         </form>

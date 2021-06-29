@@ -66,7 +66,23 @@
     }
 
     function atualizar() {
-        echo "Em andamento!";
+        $user = unserialize($_SESSION['user']);
+        $midia = new Midia();
+    
+        $midia->id = $_POST['id'];
+        $midia->nome = $_POST['nome'];
+        $midia->tipo = $_POST['tipo'];
+        $midia->autor = $_POST['autor'];
+        $midia->status = $_POST['status'];
+        $midia->dataTermino = $_POST['dataTermino'];
+        $midia->avaliacao = $_POST['avaliacao'];
+        $midia->nota = $_POST['nota'];
+        $midia->usuario = $user[0]['id'];
+    
+        $midiaDao = new MidiaDAO();
+        $midiaDao->update($midia);
+    
+        listar();
     }
 
     function deletar() {
@@ -81,25 +97,37 @@
         }
     }
 
+    function searchMidia($id){
+        $midiaDoa = new MidiaDAO();
+        $midia = $midiaDoa->searchMidia($id);
+
+        $_SESSION['midia'] = serialize($midia);
+        header("location:../View/app.php?page=midia");
+    }
+
     $operacao = $_GET['operation'];
-    if (isset($operacao)) {
-        switch($operacao) {
-            case 'cadastrar':
-                if(isset($_POST['id'])){
-                    criar();
-                } else {
-                    atualizar();
-                };
-                break;  
-            case 'consultar':
-                listar();
-                break;
-            case 'atualizar':
+if (isset($operacao)) {
+    switch ($operacao) {
+        case 'cadastrar':
+            if (isset($_POST['id']) && $_POST['id'] != '') {
                 atualizar();
-                break;
-            case 'deletar':
-                deletar();
-                break;           
-        }
-    }  
+            } else {
+               // criar();
+            };
+            break;
+        case 'consultar':
+            if (isset($_GET['id'])) {
+                searchMidia($_GET['id']);
+            } else {
+                listar();
+            };
+            break;
+        case 'atualizar':
+            atualizar();
+            break;
+        case 'deletar':
+            deletar();
+            break;
+    }
+}
 ?>

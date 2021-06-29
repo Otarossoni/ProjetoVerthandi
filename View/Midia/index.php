@@ -37,7 +37,6 @@
                 <div class="form-group text-left col-3">
                     <label>Tipo: </label>
                     <select required name="tipo" id="tipo" class="form-control" placeholder="Selecione o tipo...">
-                        <option disabled selected>Selecione um tipo</option>
                         <?php
                             $idTipo = null;
                             if(isset($_SESSION['midia'])) {
@@ -132,7 +131,7 @@
                     <?php
                         $dataTermino = null;
                         if(isset($_SESSION['midia'])) {
-                            $dataTermino = unserialize($_SESSION['midia'])[0]['dataTermino'];
+                            $dataTermino = unserialize($_SESSION['midia'])[0]['datatermino'];
                         }
                         echo "<input type='date' name='dataTermino' id='dataTermino' class='form-control' placeholder='Digite a data de término...' value='$dataTermino'/>"
                     ?>
@@ -163,7 +162,7 @@
                 
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <input type="submit" value="Inserir" class="btn primary mr-2">
+                    <input type="submit" value="Salvar" class="btn primary mr-2">
                     <a href="?page=midia" class="btn btn-secondary">Limpar</a>
                 </div>
             </div>
@@ -219,7 +218,7 @@
                                     <td>$avaliacao</td>
                                     <td>$nota</td>
                                     <td>
-                                        <a href='../Controller/MidiaController.php?operation=atualizar&id=$id' class='btn btn-warning'><i class='fas fa-pencil-alt pr-2'></i>Alterar</a>
+                                        <a href='../Controller/MidiaController.php?operation=consultar&id=$id' class='btn btn-warning'><i class='fas fa-pencil-alt pr-2'></i>Alterar</a>
                                         <a href='../Controller/MidiaController.php?operation=deletar&id=$id' class='btn btn-danger'><i class='fa fa-trash pr-2'></i>Deletar</a>
                                     </td>
                                 </tr>";

@@ -98,5 +98,51 @@
                 echo $e;
             }
         }
+
+        public function update($midia){
+            try {
+                $statement = $this->connection->prepare(
+                    "UPDATE midia SET nome = ?, tipo = ?, autor = ?, status = ?, datatermino = ?, avaliacao = ?, nota = ? WHERE usuario = ? AND id = ?"
+                );
+                
+                $statement->bindValue(1, $midia->nome);
+                $statement->bindValue(2, $midia->tipo);
+                $statement->bindValue(3, $midia->autor);
+                $statement->bindValue(4, $midia->status);
+                $statement->bindValue(5, $midia->dataTermino);
+                $statement->bindValue(6, $midia->avaliacao);
+                $statement->bindValue(7, $midia->nota);
+                $statement->bindValue(8, $midia->usuario);
+                $statement->bindValue(9, $midia->id);
+
+                $statement->execute();
+
+                // var_dump($statement); die();
+
+                //Encerra a conexão com o Banco de Dados
+                $this->connection = null;
+            } catch (PDOException $e) {
+                echo "Ocorreram erros ao atualizar a mídia!";
+                echo $e;
+            }
+        }
+
+        public function searchMidia($idMidia) {
+            try {
+                $user = unserialize($_SESSION['user']);
+                $statement = $this->connection->prepare("SELECT * FROM Midia WHERE usuario = ? AND id = ?");
+                $statement->bindValue(1, $user[0]['id']);
+                $statement->bindValue(2, $idMidia);
+
+                $statement->execute();
+                $dados = $statement->fetchAll();
+                $this->connection = null;
+                
+                return $dados;
+            } catch (PDOException $e){
+                echo "Ocorreram erros ao buscar a Mídia!";
+                echo $e;
+            }
+        }
     }
 ?>

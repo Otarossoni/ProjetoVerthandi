@@ -72,14 +72,14 @@ Projeto básico de PHP feito no semestre III da faculdade de Análise e desenvol
 - Autocadastro
 - Login
 - Logout
-- Exclusão de Usuário
-- Edição de Usuário
 - Manutenção de Mídia
 - Manutenção de Tipo de Mídia
 - Manutenção de Autor
 
 ### Exclusões 
 - Tutorial
+- Exclusão de Usuário
+- Edição de Usuário
 
 
 ### Lista de Entregas:

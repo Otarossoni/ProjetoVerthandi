@@ -3,7 +3,7 @@
 class MidiaValidate {  
     //Função responsável por validar apenas notas maiores que 0
     public static function minNota($nota){
-        if($nota > 0){
+        if($nota >= 0){
             return true;
         } else{
             return false;

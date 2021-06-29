@@ -30,7 +30,11 @@
                 $midia->tipo = $_POST['tipo'];
                 $midia->autor = $_POST['autor'];
                 $midia->status = $_POST['status'];
-                $midia->dataTermino = $_POST['dataTermino'];
+                if(isset($_POST['dataTermino']) && $_POST['dataTermino'] != ''){
+                    $midia->dataTermino = $_POST['dataTermino'];
+                } else {
+                    $midia->dataTermino = null;
+                }
                 $midia->avaliacao = $_POST['avaliacao'];
                 $midia->nota = $_POST['nota'];
                 $midia->usuario = $user[0]['id'];
@@ -47,7 +51,7 @@
                 //Echo de erro ao inserir nova midia usando Session.
                 $err = serialize($erros);
                 $_SESSION['erros'] = $err;
-                header("location:../View/Midia/error.php");
+                header("location:../View/app.php?page=midia");
         } 
     }
 
@@ -112,7 +116,7 @@ if (isset($operacao)) {
             if (isset($_POST['id']) && $_POST['id'] != '') {
                 atualizar();
             } else {
-               // criar();
+                criar();
             };
             break;
         case 'consultar':

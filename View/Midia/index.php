@@ -153,7 +153,7 @@
                         if(isset($_SESSION['midia'])) {
                             $nota = unserialize($_SESSION['midia'])[0]['nota'];
                         }
-                        echo "<input required type='number' name='nota' id='nota' class='form-control' value='$nota'/>";
+                        echo "<input required type='text' name='nota' id='nota' class='form-control' pattern='[0-9]|10' title='Notas permitidas somente de 0 a 10' value='$nota'/>";
 
                         unset($_SESSION['midia'])
                     ?>
